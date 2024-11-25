@@ -73,7 +73,7 @@ public class Menu_1 {
                 if (utilizador.getNomeDeUtilizador().equals(nomeDeUtilizador) && utilizador.getPassword().equals(password)) {
                     System.out.println("Login realizado com sucesso!");
 
-                    // Usando switch para determinar o tipo de utilizador e redirecionar para o menu correspondente
+                    // switch para determinar o tipo de utilizador e redirecionar para o menu correspondente
                     switch (utilizador.getPrivilegio().toLowerCase()) {
                         case "promotor" -> {
                             promotorLogado = (Promotor) utilizador; // Atribui o promotor logado
@@ -191,7 +191,7 @@ public class Menu_1 {
         return pattern.matcher(email).matches(); // Retorna verdadeiro se o email corresponder ao padrão
     }
     
-    // Enum para as opções do menu principal
+    // enum para as opções do menu principal
     public enum OpcaoMenu1 {
     
     LOGIN(1), // Opção de login
