@@ -192,13 +192,13 @@ public class AdminMenu2 {
         return OpcaoMenu2.getFromCodigo(opcao);
     }
 
-    private static void imprimeMenuAdmin() {
+    private static void imprimeMenuAdmin() {//Imprime o Menu principal do Admin
         System.out.print("|==   Sistema Arena-eSpace  ==|\n");
         System.out.print("|   1. Gestão de Promotores   |\n");
         System.out.print("|    2. Gestão de Eventos     |\n");
         System.out.print("|          0.  Sair           |\n");
         System.out.print("|-----------------------------|\n");
-        System.out.print("Digite a opção:");
+        System.out.print("Digite a opção:");//Solicita que seja inserida uma opção
     }
 
     private int lerInteiro(String mensagem) {
@@ -219,11 +219,11 @@ public class AdminMenu2 {
     
     public enum OpcaoMenu2 {
     
-    GestãoDePromotores(1),
+    GestãoDePromotores(1),//Opção de gestão de Promotores
     
-    GestãoDeEventos(2),
+    GestãoDeEventos(2),//Opção de gestão de Eventos
     
-    SAIR(0);
+    SAIR(0);//Opção de sair
     
     
     private final int codigoMenu2;
