@@ -12,7 +12,7 @@ import java.util.List;
 public class AdminMenu2 {
     
     private final Scanner menu2;
-    private final List<Eventos> eventosCriados;
+    private final List<Eventos> eventosCriados;//lista de eventos criados
     private final List<Utilizador> utilizadoresCadastrados; // Lista de utilizadores cadastrados
     private final Menu_1 menuPrincipal;
     
@@ -20,28 +20,28 @@ public class AdminMenu2 {
         this.menu2 = menu2;
         this.utilizadoresCadastrados = utilizadoresCadastrados; // Inicializa a lista de utilizadores
         this.menuPrincipal = menuPrincipal; // Inicializa a referencia ao Menu_1
-        this.eventosCriados = eventosCriados;
+        this.eventosCriados = eventosCriados;//Inicializa a lista de eventos criados
     }
 
-    public void executa2() {
+    public void executa2() {//Inicializa o Menu principal do administrador
         System.out.println("Bem-vindo Administrador!");
         
         OpcaoMenu2 opcao;
         do {
             opcao = mostrarMenuEDevolverOpcaoSelected();
             switch (opcao) {
-                case GestãoDePromotores -> gerenciarPromotores();
-                case GestãoDeEventos -> vizualizarEventosPorPromotr();// Chamar método para gerenciar eventos
-                case SAIR -> {
+                case GestãoDePromotores -> gerenciarPromotores();//Chama o método para a de gestão de Promotores
+                case GestãoDeEventos -> vizualizarEventosPorPromotr();// Chama o método para gerenciar os todos os eventos criados por cada promotor
+                case SAIR -> {//Voltar para o login
                     System.out.println("Saindo do menu.");
-                    menuPrincipal.executa();
+                    menuPrincipal.executa();//Executa o Menu de Login
                 }
-                default -> System.out.println("Opção inválida, tente novamente.");
+                default -> System.out.println("Opção inválida, tente novamente.");//Opção inserida não corresponde a nenhuma das apresentadas
             }
-        } while (opcao != OpcaoMenu2.SAIR);
+        } while (opcao != OpcaoMenu2.SAIR);//Quando for selecionado 0 volta para o Menu de Login
     }
     
-    private void vizualizarEventosPorPromotr() {
+    private void vizualizarEventosPorPromotr() {//Método para verificar todos os eventos criados
         // Verifica se existem eventos criados
         if (eventosCriados.isEmpty()) {
             System.out.println("Não existem eventos promovidos.");
@@ -51,7 +51,7 @@ public class AdminMenu2 {
         // Cria uma lista para armazenar nomes de promotores únicos
         List<String> promotores = new ArrayList<>();
 
-        // Coleta nomes de promotores únicos
+        // Coleta os nomes de promotores únicos
         for (Eventos evento : eventosCriados) {
             String nomePromotor = evento.getNomePromotor();
             // Adiciona o nome do promotor apenas se não estiver na lista
@@ -68,9 +68,9 @@ public class AdminMenu2 {
 
         // Solicita ao administrador que insira o nome do promotor
         System.out.print("Digite o nome do promotor para visualizar seus eventos: ");
-        String nomePromotor = menu2.nextLine(); // Certifique-se de que menu2 é um Scanner inicializado
+        String nomePromotor = menu2.nextLine(); // Certifica-se de que o menu2 é um Scanner inicializado
 
-        boolean encontrouEventos = false;
+        boolean encontrouEventos = false;//Garante que a verificação da existencia de eventos seja sempre feita
         System.out.println("Eventos promovidos por " + nomePromotor + ":");
         for (Eventos evento : eventosCriados) {
             if (evento.getNomePromotor().equalsIgnoreCase(nomePromotor)) {
@@ -85,18 +85,18 @@ public class AdminMenu2 {
         }
     }
 
-    private void gerenciarPromotores() {
+    private void gerenciarPromotores() {//Menu Gestão de Promotores
         int opcao;
         do {
             System.out.println("\n|==  Gestão de Promotores  ==|");
-            System.out.println("|    1. Listar Promotores      |");
-            System.out.println("|    2. Remover Promotor       |");
-            System.out.println("|    3. Editar Promotor        |");
-            System.out.println("|    0. Voltar                 |");
-            System.out.print("|------------------------------|\n");
+            System.out.println("|    1. Listar Promotores    |");
+            System.out.println("|    2. Remover Promotor     |");
+            System.out.println("|    3. Editar Promotor      |");
+            System.out.println("|    0. Voltar               |");
+            System.out.print("|----------------------------|\n");
             opcao = lerInteiro("Digite a opção: ");
 
-            switch (opcao) {
+            switch (opcao) {//Lê a opção selecionada
                 case 1 -> listarPromotores();
                 case 2 -> removerPromotor();
                 case 3 -> editarPromotor();
@@ -107,9 +107,9 @@ public class AdminMenu2 {
     }
 
     private void listarPromotores() {
-        if (utilizadoresCadastrados.isEmpty()) {
+        if (utilizadoresCadastrados.isEmpty()) {//Verifica se existem promotores cadastrados
             System.out.println("Não existem promotores cadastrados.");
-        } else {
+        } else {//Apresenta a lista dos promotores caso eles existam
             System.out.println("Lista de Promotores:");
             for (Utilizador utilizador : utilizadoresCadastrados) {
                 System.out.println(utilizador);
@@ -117,10 +117,10 @@ public class AdminMenu2 {
         }
     }
 
-    private void removerPromotor() {
-        if(utilizadoresCadastrados.isEmpty()){
+    private void removerPromotor() {//Método para remover Promotores
+        if(utilizadoresCadastrados.isEmpty()){//Verifica se existem promotores cadastrados
             System.out.println("Não existe promotores cadstrados.");
-        } else {
+        } else {//Pede o nome do promtor após verificar que a lista de promotores cadastrados não está vazia
             String nome = lerString("Digite o nome do promotor a ser removido: ");
         boolean encontrado = false;
 
@@ -134,15 +134,15 @@ public class AdminMenu2 {
             }
         }
 
-        if (!encontrado) {
+        if (!encontrado) {//Se o nome do Promotor inserido não existir
             System.out.println("Promotor não encontrado.");
             }
         }
         
     }
     
-    private void editarPromotor() {
-    if (utilizadoresCadastrados.isEmpty()) {
+    private void editarPromotor() {//Método para alterar qualquer dado de um Promotor
+    if (utilizadoresCadastrados.isEmpty()) {//Verifica se existem promotores cadastrados
         System.out.println("Não existem promotores cadastrados.");
         return;
     }
@@ -180,12 +180,12 @@ public class AdminMenu2 {
         }
     }
 
-    if (!encontrado) {
+    if (!encontrado) {//Caso o nome do Promotor inserido não exista
         System.out.println("Promotor não encontrado.");
     }
 }
 
-    private OpcaoMenu2 mostrarMenuEDevolverOpcaoSelected() {
+    private OpcaoMenu2 mostrarMenuEDevolverOpcaoSelected() {//Imprime o Menu principal do Admin
         imprimeMenuAdmin();
         int opcao = menu2.nextInt();
         menu2.nextLine();
