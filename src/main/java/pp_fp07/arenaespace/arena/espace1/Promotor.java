@@ -10,14 +10,19 @@ import java.time.LocalDateTime;
  *
  * @author RyanS
  */
-public class Promotor extends Utilizador { 
 
+// A classe Promotor que herda da classe Utilizador todos os atributos, indicando que um promotor é um tipo de utilizador
+public class Promotor extends Utilizador { 
+    // Construtor da classe Promotor que inicializa os atributos herdados da classe Utilizador
     public Promotor(String NomeCompleto, String NomeDeUtilizador, String email, String password, String Privilegio) {
+        // Chama o construtor da classe pai (Utilizador) para inicializar os atributos
         super(NomeCompleto, NomeDeUtilizador, email, password, Privilegio);
     }
 
+    // Método toString que retorna uma representação em String do promotor
     @Override
     public String toString() {
+        // Retorna uma string formatada com o nome completo do promotor e seu email de contacto
         return "Promotor: " + getNomeCompleto() + " (Contacto: " + getEmail() + ")";
     }
 }

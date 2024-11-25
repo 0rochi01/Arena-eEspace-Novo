@@ -14,7 +14,6 @@ import java.util.Scanner;
  */
 public class ArenaESpace1 {
     public static void main(String[] args) {
-        // Cria a lista de utilizadores cadastrados
         try ( // Cria o Scanner para entrada do usuário
             Scanner scanner = new Scanner(System.in)) {
             // Cria a lista de utilizadores cadastrados
@@ -25,7 +24,6 @@ public class ArenaESpace1 {
             Menu_1 menu = new Menu_1(scanner, utilizadoresCadastrados, eventosCriados);
             // Executa o menu principal
             menu.executa();
-            // Fecha o scanner ao final da execução
         }
     }
 }
