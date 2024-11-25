@@ -19,71 +19,71 @@ import static pp_fp07.arenaespace.arena.espace1.Menu_1.promotorLogado;
  */
 public class PromotorMenu3 {
 
-    private final Menu_1 menuPrincipal;
-    private final Scanner menu3;
-    private final List<Eventos> eventosCriados;
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    private final Menu_1 menuPrincipal;//Ménu principal
+    private final Scanner menu3;//Declara o Scanner 
+    private final List<Eventos> eventosCriados;//Lista de eventos criados
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");//Formatação da data e Hora
     
     
     public PromotorMenu3(Scanner menu3, Menu_1 menuPrincipal, List<Eventos> eventosCriados) {
-        this.menu3 = menu3;
-        this.menuPrincipal = menuPrincipal;
-        this.eventosCriados = eventosCriados;
+        this.menu3 = menu3;//Inicializa o Menu 3
+        this.menuPrincipal = menuPrincipal;//Inicializa o Menu Principal
+        this.eventosCriados = eventosCriados;//Inicializa a lista de eventos criados 
     }
     
-    public void executa3() {
-        System.out.println("Bem-vindo Promotor de Eventos!");
+    public void executa3() {//Executa o Menu 3
+        System.out.println("Bem-vindo Promotor de Eventos!");//Dá as boas vindas ao Promotor
 
         OpcaoMenu3 opcao = mostrarMenuEDevolverOpcaoSelecionada();
 
         do {
             switch (opcao) {
-                case GERIREVENTOS -> gerenciarEventos();
-                case CRIAREVENTOS -> criarEventos();
-                case SAIR -> {
+                case GERIREVENTOS -> gerenciarEventos();//Opção Gerenciar eventos 
+                case CRIAREVENTOS -> criarEventos();//Opção criar Eventos 
+                case SAIR -> {//Opção de sair 
                     System.out.print("\nAté Logo!!");
-                    menuPrincipal.executa();
+                    menuPrincipal.executa();//Volta para o menu de login
                 }
-                default -> System.out.println("Opção Inválida");
+                default -> System.out.println("Opção Inválida");//Se a opção selecionada não existir
             }
             opcao = mostrarMenuEDevolverOpcaoSelecionada(); // Atualiza a opção para o próximo loop
-        } while (opcao != OpcaoMenu3.SAIR);
+        } while (opcao != OpcaoMenu3.SAIR);//Mantém o loop enquanto a opção sair não é selecionada
     }
     
-    private void gerenciarEventos() {
-        OpcaoGerirEventos op;
+    private void gerenciarEventos() {//Método para Gerenciar eventos
+        OpcaoGerirEventos op;//Opção gerir eventos
         do {
             op = mostrarMenuEDevolverOpcaoSetada();
             switch (op) {
-                case VIZUALIZARRESERVAS -> vizualizarReservas();
-                case EDITARRESERVAS -> editarReservas();
-                case REMOVEREVENTOS -> removerEvento();
-                case MENUANTERIOR -> {
+                case VIZUALIZARRESERVAS -> vizualizarReservas();//Opção vizualizar reservas 
+                case EDITARRESERVAS -> editarReservas();//Opção editar reservas
+                case REMOVEREVENTOS -> removerEvento();//Opção remover eventos
+                case MENUANTERIOR -> {//Opção voltar para o menu anterior
                 }
-                case SAIR -> {
+                case SAIR -> {//Opção sair
                     System.out.print("\nAté Logo!!");
-                    menuPrincipal.executa();
+                    menuPrincipal.executa();//Executa o menu de login
                 }
-                default -> System.out.println("Opção Inválida");
+                default -> System.out.println("Opção Inválida");//Caso a opção inserida não seja válida
             }
-        } while (op != OpcaoGerirEventos.MENUANTERIOR);
+        } while (op != OpcaoGerirEventos.MENUANTERIOR);//Mantém o loop enquanto não selecionar a opção de voltar para o menu anterior
     }
     
-    private void criarEventos() {
+    private void criarEventos() {//Método para criar eventos
         boolean continuar = true;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");//Formato da data e hora
         final int LIMITE_EVENTOS = 2; // Limite de eventos
-        int contadorEventosCriados = 0;
+        int contadorEventosCriados = 0;//Número de eventos criados
 
         while (continuar) {
-            if (contadorEventosCriados >= LIMITE_EVENTOS) {
+            if (contadorEventosCriados >= LIMITE_EVENTOS) {//Verifica se o limite de eventos foi atingido 
                 System.out.println("Limite de " + LIMITE_EVENTOS + " eventos já atingido. Não é possível criar mais eventos.");
                 break; // Encerra o loop se o limite for atingido
             }
 
-            String titulo = solicitarEntrada("Digite o título do Evento:");
-            LocalDateTime dataHora = solicitarDataHora(formatter);
-            String sala = solicitarEntrada("Digite a Sala do Evento:");
+            String titulo = solicitarEntrada("Digite o título do Evento:");//Solicita e armazena o título do evento
+            LocalDateTime dataHora = solicitarDataHora(formatter);//Solicita e armazena a data e hora do evento
+            String sala = solicitarEntrada("Digite a Sala do Evento:");//SOlicita a armazena a sala do evento selecionada
 
             // Verifica se já existe um evento na mesma data e sala
             if (verificarConflitoEventos(dataHora, sala)) {
@@ -91,8 +91,8 @@ public class PromotorMenu3 {
                 continue; // Retorna ao início do loop para criar um novo evento
             }
 
-            String modalidade = solicitarEntrada("Escolha a modalidade do seu Evento:");
-            int numeroMaximoDeParticipantes = solicitarNumeroMaximoParticipantes();
+            String modalidade = solicitarEntrada("Escolha a modalidade do seu Evento:");//Solicita e armazena a modalidade do evento
+            int numeroMaximoDeParticipantes = solicitarNumeroMaximoParticipantes();//Solicita o Número máximo de participantes
 
             // Verifica se o número máximo de participantes é válido
             if (numeroMaximoDeParticipantes <= 0) {
@@ -125,26 +125,26 @@ public class PromotorMenu3 {
         }
     }
     
-    private void vizualizarReservas(){
-        if (eventosCriados.isEmpty()){
+    private void vizualizarReservas(){//Vizualizar as reservas do promotor
+        if (eventosCriados.isEmpty()){//Verifica se existem reservas realizadas pelo promotor
             System.out.println("Não existe reservas efetuadas");
         } else {
-            for (Eventos evento : eventosCriados){
+            for (Eventos evento : eventosCriados){//Para cada evento criado
                 System.out.println(evento.toString()); // Exibe detalhes do evento 
             }
            
         }
     }
     
-    private void editarReservas() {
-        if (eventosCriados.isEmpty()) {
+    private void editarReservas() {//Editar reservas 
+        if (eventosCriados.isEmpty()) {//Verifica se existem eventos para que possam ser editados
             System.out.println("Não existem eventos cadastrados para editar.");
             return;
         }
 
         // Exibir eventos existentes
         System.out.println("Eventos cadastrados:");
-        for (int i = 0; i < eventosCriados.size(); i++) {
+        for (int i = 0; i < eventosCriados.size(); i++) {//Lista todos os eventos do promotor para editar
             Eventos evento = eventosCriados.get(i);
             System.out.println((i + 1) + ". " + evento.toString());
         }
@@ -156,7 +156,7 @@ public class PromotorMenu3 {
             if (menu3.hasNextInt()) {
                 eventoIndex = menu3.nextInt() - 1; // Ajusta para índice zero
                 menu3.nextLine(); // Consumir a nova linha
-                if (eventoIndex < 0 || eventoIndex >= eventosCriados.size()) {
+                if (eventoIndex < 0 || eventoIndex >= eventosCriados.size()) {//caso a opção seja inválida
                     System.out.println("Número de evento inválido. Tente novamente.");
                 }
             } else {
