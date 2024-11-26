@@ -252,7 +252,7 @@ public class Menu_1 {
 }
     
     private static void imprimeMenuPrincipal() { // Método estático para imprimir o menu principal
-        System.out.print("|==   Sistema Arena-eSpace  ==|\n");
+        System.out.print("\n|==   Sistema Arena-eSpace  ==|\n");
         System.out.print("|          1. login           |\n");   
         System.out.print("|          2. Registo         |\n");
         System.out.print("|          0.  Sair           |\n");
