@@ -14,8 +14,8 @@ import java.util.Scanner;
  */
 public class ArenaESpace1 {
     public static void main(String[] args) {
-        try ( // Cria o Scanner para entrada do usuário
-            Scanner scanner = new Scanner(System.in)) {
+        Scanner scanner = new Scanner(System.in); // Não usando try-with-resources
+        try {
             // Cria a lista de utilizadores cadastrados
             List<Utilizador> utilizadoresCadastrados = new ArrayList<>();
             // Cria a lista de eventos criados
@@ -24,6 +24,8 @@ public class ArenaESpace1 {
             Menu_1 menu = new Menu_1(scanner, utilizadoresCadastrados, eventosCriados);
             // Executa o menu principal
             menu.executa();
+        } finally {
+            scanner.close(); // Fecha o scanner aqui
         }
     }
 }

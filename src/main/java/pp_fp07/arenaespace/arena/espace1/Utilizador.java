@@ -11,11 +11,11 @@ package pp_fp07.arenaespace.arena.espace1;
  */
 public class Utilizador {
     // Atributos da classe Utilizador, que armazenam informações sobre o utilizador
-    protected String NomeCompleto; // Nome completo do utilizador
-    protected String NomeDeUtilizador; // Nome de utilizador (username)
-    protected String email; // Email do utilizador
-    protected String password; // Senha do utilizador
-    protected String Privilegio; // Nível de privilégio do utilizador (por exemplo, admin, usuário comum)
+    private String NomeCompleto; // Nome completo do utilizador
+    private String NomeDeUtilizador; // Nome de utilizador (username)
+    private String email; // Email do utilizador
+    private String password; // Senha do utilizador
+    private String Privilegio; // Nível de privilégio do utilizador (por exemplo, admin, usuário comum)
 
     // Construtor da classe Utilizador que inicializa os atributos do utilizador
     public Utilizador(String NomeCompleto, String NomeDeUtilizador, String email, String password, String Privilegio) {

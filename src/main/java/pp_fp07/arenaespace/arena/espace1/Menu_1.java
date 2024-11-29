@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-import pp_fp07.arenaespace.arena.espace1.PromotorMenu3.Privilegio;
+import pp_fp07.arenaespace.arena.espace1.Admin.AdminMenu2;
+import pp_fp07.arenaespace.arena.espace1.Promotor.PromotorMenu3;
+import static pp_fp07.arenaespace.arena.espace1.Promotor.PromotorMenu3.Privilegio;
 /**
  *
  * @author RyanS
@@ -25,27 +27,22 @@ public class Menu_1 {
     }
    
     public void executa() {
-        try (menu) {
-            
-            OpcaoMenu1 opcao = mostrarMenuEDevolverOpcaoSelected();  // Mostra o menu e devolvo a opção selecionada
-            while (opcao != OpcaoMenu1.SAIR) {  // Enquanto a opção for diferente de SAIR, o looping continua
-                switch (opcao) {
-                    case OpcaoMenu1.REGISTO -> {
-                        Utilizador utilizador = cadastroDeUtilizador(); // Cadastra um Utilizador
-                        if (utilizador != null) { // Verifica se o cadastro foi bem-sucedido
-                            utilizadoresCadastrados.add(utilizador); // Adiciona o utilizador na Lista 
-                            utilizador.imprimeDados(); // E exibo seus dados cadastrados (exceto password). 
-                        }
+        OpcaoMenu1 opcao = mostrarMenuEDevolverOpcaoSelected();
+        while (opcao != OpcaoMenu1.SAIR) {
+            switch (opcao) {
+                case OpcaoMenu1.REGISTO -> {
+                    Utilizador utilizador = cadastroDeUtilizador();
+                    if (utilizador != null) {
+                        utilizadoresCadastrados.add(utilizador);
+                        utilizador.imprimeDados();
                     }
-                    case OpcaoMenu1.LOGIN -> loginDoUtilizador(menu, utilizadoresCadastrados); // Eu faço o login do utilizador existente na lista de utilizador
-                    default -> System.out.println("Opção Inválida");
                 }
-                
-                // Atualiza a opção para mostrar o menu novamente
-                opcao = mostrarMenuEDevolverOpcaoSelected(); // Mostra o menu e devolvo a opção selecionada
-            }       
-            System.out.print("\nAté Logo!!"); // Fecha o menu, encerrando atividade
-        } 
+                case OpcaoMenu1.LOGIN -> loginDoUtilizador(menu, utilizadoresCadastrados);
+                default -> System.out.println("Opção Inválida");
+            }
+            opcao = mostrarMenuEDevolverOpcaoSelected();
+        }
+        System.out.print("\nAté Logo!!");
     }
     
     // Método responsável pelo login do utilizador

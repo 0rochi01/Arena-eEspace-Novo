@@ -4,12 +4,23 @@
  */
 package pp_fp07.arenaespace.arena.espace1;
 
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-
-public class AdminMenu2 {
+/**
+ *
+ * @author RyanS
+ */
+public class Admin extends Utilizador { 
+    
+    // Construtor da classe Promotor que inicializa os atributos herdados da classe Utilizador
+    public Admin(String NomeCompleto, String NomeDeUtilizador, String email, String password, String Privilegio) {
+        // Chama o construtor da classe pai (Utilizador) para inicializar os atributos
+        super(NomeCompleto, NomeDeUtilizador, email, password, Privilegio);
+    }
+    
+    static class AdminMenu2 {
     
     private final Scanner menu2; // Declara um objeto Scanner que será utilizado para ler a entrada do utilizador a partir do console
     private final List<Eventos> eventosCriados;//lista de eventos criados
@@ -262,3 +273,6 @@ public class AdminMenu2 {
         }
     } 
 }
+}
+
+
