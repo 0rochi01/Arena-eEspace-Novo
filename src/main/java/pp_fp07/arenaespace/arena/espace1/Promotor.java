@@ -33,9 +33,9 @@ static class PromotorMenu3 {
     private final List<Eventos> eventosCriados;//Lista de eventos criados
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");//Formatação da data e Hora
     
-    //construtor da classe
+    //construtor da classe PromotorMenu3
     public PromotorMenu3(Scanner menu3, Menu_1 menuPrincipal, List<Eventos> eventosCriados) {
-        this.menu3 = menu3;//Inicializa o Menu 3
+        this.menu3 = menu3;//Inicializa o Menu 3 
         this.menuPrincipal = menuPrincipal;//Inicializa o Menu Principal
         this.eventosCriados = eventosCriados;//Inicializa a lista de eventos criados 
     }

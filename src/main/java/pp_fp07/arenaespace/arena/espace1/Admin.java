@@ -27,7 +27,7 @@ public class Admin extends Utilizador {
     private final List<Utilizador> utilizadoresCadastrados; // Lista de utilizadores cadastrados
     private final Menu_1 menuPrincipal; // Referência ao menu principal (Menu_1)
     
-    // Construtor da classe
+    // Construtor da classe AdminMenu2
     public AdminMenu2(Scanner menu2, List<Utilizador> utilizadoresCadastrados, Menu_1 menuPrincipal, List<Eventos> eventosCriados) {
         this.menu2 = menu2; // Inicializa o scanner para entrada de dados
         this.utilizadoresCadastrados = utilizadoresCadastrados; // Inicializa a lista de utilizadores
